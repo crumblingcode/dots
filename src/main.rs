@@ -12,6 +12,6 @@ fn main() {
     println!("{:#?}", cli);
 
     // work
-    let tgt_files = dotfile::parse_dotfile(&cli);
+    let tgt_files = dotfile::parse_dotfile_or_panic(&cli);
     println!("{:#?}", tgt_files);
 }
