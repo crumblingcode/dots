@@ -24,7 +24,8 @@ fn main() {
 
     // do stuff
     match app.command {
-        cli::SubCmd::Pull {} => actions::pull(tgt_files),
+        cli::SubCmd::Pull {} => actions::pull(tgt_files, &app.get_dotfiles_dir_path())
+            .expect("Failed pulling - Exiting"),
         cli::SubCmd::Push {} => {
             println!("TODO!")
         }

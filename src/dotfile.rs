@@ -22,13 +22,12 @@ pub fn parse_dotfile_or_panic(cli: &App) -> Dots {
     return dots;
 }
 
-pub fn repo_path_from_dotfile_path(fs_path: &PathBuf) -> PathBuf {
+/// "chroot" path under new_root, handling if absolute paths
+pub fn chroot_path(new_root: &PathBuf, path: &PathBuf) -> PathBuf {
     // ensure non-absolute path
-    let rel_path = match fs_path.strip_prefix("/") {
+    let rel_path = match path.strip_prefix("/") {
         Ok(rel) => PathBuf::from(rel),
-        Err(_) => fs_path.clone(), // already relative path
+        Err(_) => path.clone(), // already relative path
     };
-    // add repo prefix
-    // let repo_path = // DOING
-    return rel_path;
+    new_root.join(rel_path)
 }
