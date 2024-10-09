@@ -5,3 +5,5 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.5.19", features = ["derive", "unicode"] }
+env_logger = { version = "0.11.5", features = ["unstable-kv"] }
+log = { version = "0.4.22", features = ["kv"] }
