@@ -2,6 +2,8 @@ mod actions;
 mod cli;
 mod dotfile;
 
+use std::fs;
+
 use clap::Parser;
 use cli::App;
 
@@ -24,13 +26,19 @@ fn main() {
 
     // do stuff
     match app.command {
-        cli::SubCmd::Pull {} => actions::pull(tgt_files, &app.get_dotfiles_dir_path())
-            .expect("Failed pulling - Exiting"),
+        cli::SubCmd::Pull {} => {
+            let res = actions::pull(tgt_files, &app.get_dotfiles_dir_path());
+            match res {
+                Ok(_) => {}
+                Err(_) => {}
+            }
+        }
         cli::SubCmd::Push {} => {
-            println!("TODO!")
+            println!("TODO!");
+            fs::copy("/.config/nvim/init.lua", "./tmp.txt").unwrap();
         }
         cli::SubCmd::Diff {} => {
-            println!("TODO!")
+            println!("TODO!");
         }
     }
 }

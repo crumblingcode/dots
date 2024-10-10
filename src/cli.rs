@@ -4,10 +4,10 @@ use std::path::PathBuf;
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 pub struct App {
-    /// Toggle No-op (dry-run)
+    /// TODO Toggle No-op (dry-run)
     ///
     /// Only print actions, without performing them on file system
-    #[arg(short, long, global = true)]
+    #[arg(long, global = true)]
     pub noop: bool,
 
     /// Path to file containing targeted/managed file (paths)
@@ -17,7 +17,7 @@ pub struct App {
     #[arg(short, long, global = true, default_value = "dotfiles.txt")]
     pub dotfile: PathBuf,
 
-    /// Path to repo dir, to where dotfiles will be pulled
+    /// Path to repo dir, to where dotfiles will be pulled [defaults to --dotfiles parent dir]
     ///
     #[arg(long, global = true)]
     pub dotfiles_dir: Option<PathBuf>,
